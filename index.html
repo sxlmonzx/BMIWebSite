@@ -99,12 +99,14 @@ let sizeCode;
 
 if (bmi <= 18.5) {
     sizeCode = 1;
-} else if (bmi <= 24.9) {
+} else if (bmi <= 22.9) {
     sizeCode = 2;
-} else if (bmi <= 29.9) {
+} else if (bmi <= 24.9) {
     sizeCode = 3;
-} else {
+} else if (bmi <= 29.9){
     sizeCode = 4;
+}else {
+    sizeCode = 5;
 }
 let message = "";
 switch (sizeCode) {
