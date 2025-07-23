@@ -62,7 +62,7 @@ h1 {
 }
 
 h1 {
-    margin-left: 95px;
+    margin-left: 90px;
     font-size: 22px;
     font-weight: bold;
 }
@@ -111,16 +111,19 @@ if (bmi <= 18.5) {
 let message = "";
 switch (sizeCode) {
     case 1:
-        message = "น้ำหนักน้อยกว่ามาตรฐาน คุณเหมาะกับเสื้อไซส์ XS, S, M";
+        message = "คุุณน้ำหนักน้อยกว่ามาตรฐาน คุณเหมาะกับเสื้อไซส์ XS และ S";
         break;
     case 2:
-        message = "สมส่วน คุณเหมาะกับเสื้อไซส์ M และ L";       
+        message = "คุณสมส่วน คุณเหมาะกับเสื้อไซส์ S และ M";       
         break;
     case 3:
-        message = "น้ำหนักเกิน คุณเหมาะกับเสื้อไซส์ L และ XL";
+        message = "คุณน้ำหนักมากกว่ามาตรฐาน คุณเหมาะกับเสื้อไซส์ M และ L";
         break;
     case 4:
-        message = "น้ำหนักมากกว่ามาตรฐาน คุณเหมาะกับเสื้อไซส์ XL ขึ้นไป";
+        message = "คุณน้ำหนักค่อนข้างมากกว่ามาตรฐาน คุณเหมาะกับเสื้อไซส์ L และ XL";
+        break;
+    case 5;
+        message = "คุณเป็นโรคอ้วน คุณเหมาะกับเสื้อไซส์ XL ขึ้นไป";
         break;
 }
 document.getElementById("bmi").innerHTML = bmi.toFixed(2);
