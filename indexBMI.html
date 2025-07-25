@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMIWeb</title>
+    <link rel="Web Icon" type="image" href="C:\Users\USER\Downloads\63550d99-4ef4-4dd9-892a-5a6ec60800b1.png">
+</head>
+<style>
+body {
+    background-color: #b2cbe1;
+}
+
+.header {
+    background-color: #fd2f96;
+    margin-top: -22px;
+}
+
+.input {
+    margin-left: 700px;
+    align-items: center;
+    gap: 10px;
+    font-size: 24px;
+}
+
+.output {
+    margin-left: 675px;
+    align-items: center;
+    gap: 10px;
+    font-size: 18px;   
+}
+
+h1 {
+    margin-left: 750px;
+    font-weight: bold;
+}
+</style>
+<body>
+    <div class="header"><h1>ฟังก์ชันคำนวณค่าBMI</h1></div>
+    <form>
+    <div class="input">
+    <label for="Weight">กรอกน้ำหนักของคุณ(หน่วยกิโลกรัม)</label><br>    
+    <input type="text" id="Weight"><br>
+    <label for="Height">กรอกส่วนสูงของคุณ(หน่วยเซนติเมตร)</label><br>
+    <input type="text" id="Height">
+    <button type="button" onclick="calculateBMI()">ยืนยัน</button><br>
+    </div>
+
+    <div class="output">
+    <h2>ค่าBMIของคุณเท่ากับ<output id="result2"></output></h2><br>
+    <h2>สถานะของคุณคือ <output id="result4"></output><output id="result1"></output></h2>
+    <h2>คิดเป็นร้อยละ <output id="result3"></output> ของน้ำหนักปัจจุบัน</h2><br> 
+    </div>    
+    </form>
+
+<script>
+function sigWeight(x) {
+    return Math.floor(x * 100) / 100;
+}
+
+function sigBMI(BMI) {
+    return Math.floor(BMI * 100) / 100;
+}
+
+function relatively(x, weight) {
+    let unround = (x / weight) * 100;
+    return Math.round(unround);
+}
+
+function calculateBMI() {
+    let weight = parseFloat(document.getElementById("Weight").value);
+    let heightcm = parseFloat(document.getElementById("Height").value);
+
+    let height = heightcm/100;
+    let BMI = weight / (height * height);
+
+    let x;
+    let status = "";
+    if (BMI <= 18.5) {
+        x = 22.9 * (height * height) - weight;
+        status = "น้ำหนักน้อยกว่ามาตรฐาน ควรเพิ่มน้ำหนักขึ้น";
+
+    } else if (BMI <= 22.9) {
+        status = "สมส่วน ควรดูแลสุขภาพต่อไป";
+
+    } else if (BMI <= 24.9) {
+        x = weight - 22.9 * (height * height);
+        status = "น้ำหนักเกินมาตรฐาน ควรลดน้ำหนักลง";
+
+    } else if (BMI <= 29.9) {
+        x = weight - 22.9 * (height * height);
+        status = "น้ำหนักค่อนข้างมาก ควรลดน้ำหนักลง";
+
+    } else {
+        x = weight - 22.9 * (height * height);
+        status = "โรคอ้วน ควรลดน้ำหนักลง";
+    }
+
+    let sigx = sigWeight(x);
+    let sigBMIvalue = sigBMI(BMI);
+    let relativePercent = relatively(x, weight);
+
+    document.getElementById("result1").innerText = sigx;
+    document.getElementById("result2").innerText = sigBMIvalue;
+    document.getElementById("result3").innerText = relativePercent;
+    document.getElementById("result4").innerText = status;
+}
+</script>
+</body>
+</html>
+
